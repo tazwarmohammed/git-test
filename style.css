@@ -11,8 +11,13 @@ li {
 }
 
 ul {
+  color: blue; /* Overridden by next ul type selector as it has higher specificity */
+}
+
+ul {
   display: flex;
   list-style: none;
+  color: aqua;
 }
 
 .block {
