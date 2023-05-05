@@ -16,8 +16,61 @@
     </ul>
     <p>I am another paragraph. Some of the <strong class = "block">words</strong> have been wrapped in a span element.</p>
 
+     <button onclick="alert('Hello World')">Click Me</button> <!--method 1 -->
+
+    <button id="btn">Click Me Method 2</button>
+
+    <button id="btnn">Click Me Method 3</button>
+
+    <button onclick="alertFunction()">CLICK ME BABY</button>
+
+    <button id="btnnn">Click Me Method BABY 2</button>
+
+    <button id="butn">Click Me Method BABY 3</button>
+
+
+    <div id="container">
+        <button id="1">Click HERE 1</button>
+        <button id="2">Click HERE 2</button>
+        <button id="3">Click HERE 3</button>
+    </div>
+
     <script>
-        console.log("TMS");
+
+        const btn = document.querySelector('#btn'); //method 2
+        btn.onclick = () => alert("Hello World");
+
+        const btnn = document.querySelector('#btnn'); //method 3
+        btnn.addEventListener('click', () => {
+            alert("Hello World");
+        });
+
+        function alertFunction() {     //method 1 using named function
+            alert("YAY! YOU DID IT!");
+        }
+
+        // METHOD 2
+        const btnnn = document.querySelector('#btnnn');
+        btnnn.onclick = alertFunction;
+
+        // METHOD 3
+        const butn = document.querySelector('#butn');
+        butn.addEventListener('click', alertFunction);
+
+        btn.addEventListener('click', function (f) {
+            f.target.style.background = 'blue';
+            f.target.style.color = 'red';
+        });
+
+        // buttons is a node list. It looks and acts much like an array.
+        const buttons = document.querySelectorAll('button');
+        console.log(buttons);
+
+        buttons.forEach((button) => {
+            button.addEventListener('click', () => {
+                alert(button.innerText);
+            });
+        });
     </script>
 
 </body>
