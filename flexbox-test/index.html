@@ -65,11 +65,13 @@
 </body>
 <script>
     // Wait for the page to finish loading
-  document.addEventListener("DOMContentLoaded",() => {
-      // Attach `change` event listener to checkbox
-      document.getElementById("billing-checkbox").addEventListener("change", toggleBilling);
-    }, false
-  );
+  // document.addEventListener("DOMContentLoaded",() => {
+  //     // Attach `change` event listener to checkbox
+      
+  //   }, false
+  // );
+
+  document.getElementById("billing-checkbox").addEventListener("change", toggleBilling);
 
   function toggleBilling() {
     // Select the billing text fields
