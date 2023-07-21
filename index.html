@@ -2,76 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inner and Outer display types</title>
-    <link rel="stylesheet" href="style.css">
-</head> 
+    <title>React Demo</title>
+</head>
 <body>
-    <p>I am a paragraph. A short one.</p>
-    <ul>
-        <li>Item One</li>
-        <li>Item Two</li>
-        <li>Item Three</li>
-    </ul>
-    <p>I am another paragraph. Some of the <strong class = "block">words</strong> have been wrapped in a span element.</p>
+    <div id="app"></div>
 
-     <button onclick="alert('Hello World')">Click Me</button> <!--method 1 -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    <button id="btn">Click Me Method 2</button>
+    <script type="text/jsx">
+      const app = document.getElementById("app")
 
-    <button id="btnn">Click Me Method 3</button>
+      function Header({ title }) {
+        return <h1>{title ? title : "Default title"}</h1>
+      }
 
-    <button onclick="alertFunction()">CLICK ME BABY</button>
+      function HomePage() {
+        const names = ["Ada Lovelace", "Grace Hopper", "Margaret Hamilton"]
 
-    <button id="btnnn">Click Me Method BABY 2</button>
+        const [likes, setLikes] = React.useState(0)
 
-    <button id="butn">Click Me Method BABY 3</button>
-
-
-    <div id="container">
-        <button id="1">Click HERE 1</button>
-        <button id="2">Click HERE 2</button>
-        <button id="3">Click HERE 3</button>
-    </div>
-
-    <script>
-
-        const btn = document.querySelector('#btn'); //method 2
-        btn.onclick = () => alert("Hello World");
-
-        const btnn = document.querySelector('#btnn'); //method 3
-        btnn.addEventListener('click', () => {
-            alert("Hello World");
-        });
-
-        function alertFunction() {     //method 1 using named function
-            alert("YAY! YOU DID IT!");
+        function handleClick() {
+          setLikes(likes + 1)
         }
 
-        // METHOD 2
-        const btnnn = document.querySelector('#btnnn');
-        btnnn.onclick = alertFunction;
+        return (
+          <div>
+            <Header title="Develop. Preview. Ship. 🚀" />
+            <ul>
+              {names.map((name) => (
+                <li key={name}>{name}</li>
+              ))}
+            </ul>
 
-        // METHOD 3
-        const butn = document.querySelector('#butn');
-        butn.addEventListener('click', alertFunction);
+            <button onClick={handleClick}>Like ({likes})</button>
+          </div>
+        )
+      }
 
-        btn.addEventListener('click', function (f) {
-            f.target.style.background = 'blue';
-            f.target.style.color = 'red';
-        });
-
-        // buttons is a node list. It looks and acts much like an array.
-        const buttons = document.querySelectorAll('button');
-        console.log(buttons);
-
-        buttons.forEach((button) => {
-            button.addEventListener('click', () => {
-                alert(button.innerText);
-            });
-        });
+      ReactDOM.render(<HomePage />, app)
     </script>
-
-</body>
+  </body>
 </html>
